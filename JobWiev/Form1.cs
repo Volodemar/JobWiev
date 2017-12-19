@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Data.SQLite;
 
 namespace JobWiev
 {
@@ -19,6 +20,7 @@ namespace JobWiev
         private double TaskTime2 = 0;
         private double TaskTime3 = 0;
         private double Modify = 5*60;
+        private string SQLConnectString = "Data Source=JobWiev.db; Version=3";
 
         public Form1()
         {
@@ -29,13 +31,13 @@ namespace JobWiev
                 //Расчет ставки в минуту
                 MoneySecond.Text = Convert.ToString(Convert.ToDouble(MoneyHour.Text) / 60 / 60);
                 ModifyColor();
-                Hashtable test = new Hashtable();
-                test.Add("1", "Абра кадабра");
-                test.Add("2", "Абра кадабра2");
-                test.Add("3", "Абра кадабра3");
-                test.Add("4", "Абра кадабра еу!");
-                dataGridView1.DataSource = test.Cast<DictionaryEntry>().Select(x => new {Col1 = x.Key.ToString(), Col2 = x.Value.ToString()}).ToList();
-            }
+                //Hashtable test = new Hashtable();
+                //test.Add("1", "Абра кадабра");
+                //test.Add("2", "Абра кадабра2");
+                //test.Add("3", "Абра кадабра3");
+                //test.Add("4", "Абра кадабра еу!");
+                //dataGridView1.DataSource = test.Cast<DictionaryEntry>().Select(x => new {Col1 = x.Key.ToString(), Col2 = x.Value.ToString()}).ToList();
+    }
         }
 
         private void buttonTask1_Click(object sender, EventArgs e)
@@ -408,16 +410,80 @@ namespace JobWiev
         private void button8_Click(object sender, EventArgs e)
         {
             Process.Start("d:\\Work\\PR\\RIP2\\ClientLoader.lnk");
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             Process.Start("d:\\Work\\PR\\RIP2\\SOURCES\\CLIENT\\Client.sln");
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Process.Start("d:\\Work\\PR\\RIP2\\Build.bat");    
+            Process.Start("d:\\Work\\PR\\RIP2\\Build.bat");
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //SQLiteConnect.Open();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //SQLiteConnect.Close();
+        }
+
+        private void SelectButton_Click(object sender, EventArgs e)
+        {
+            DBSelect("SELECT * FROM TASKS;");
+        }
+
+        private void DBSelect(String Sql)
+        {
+            SQLiteConnection DB = new SQLiteConnection(this.SQLConnectString);
+
+            DB.Open();
+
+            try
+            {
+                SQLiteCommand command = DB.CreateCommand();
+                command.CommandText = Sql;
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                DataTable table = new DataTable();
+
+                //Заполним данные о столбцах
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    string colName = reader.GetName(i);
+                    DataColumn column = new DataColumn(colName, typeof(string));
+                    table.Columns.Add(column);
+                }
+
+                //Пробегаем по каждой записи
+                while (reader.Read())
+                {
+                    //Заполняем строчку таблицы
+                    DataRow row = table.NewRow();
+                    //В каждой записи пробегаем по всем столбцам
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        //Добавлем значение столбца в row
+                        row[table.Columns[i].ColumnName] = reader.GetValue(i).ToString();
+                    }
+                    table.Rows.Add(row);
+                }
+
+                this.TasksGrid.DataSource = table;
+            }
+            catch (Exception e)
+		    {
+                MessageBox.Show("Error Executing SQL: " + e.ToString(), "Exception While Displaying MyTable ...");
+            }
+
+            DB.Close();
         }
     }
 }

@@ -7,3 +7,7 @@ D:\Work\JobWiev\JobWiev\obj\Release\JobWiev.csproj.GenerateResource.Cache
 D:\Work\JobWiev\JobWiev\obj\Release\JobWiev.exe
 D:\Work\JobWiev\JobWiev\obj\Release\JobWiev.pdb
 D:\Work\JobWiev\JobWiev\obj\Release\JobWiev.csprojResolveAssemblyReference.cache
+D:\Work\JobWiev\JobWiev\bin\Release\System.Data.SQLite.dll
+D:\Work\JobWiev\JobWiev\bin\Release\System.Data.SQLite.xml
+D:\Work\JobWiev\JobWiev\bin\Release\System.Data.SQLite.dll.config
+D:\Work\JobWiev\JobWiev\obj\Release\JobWiev.csproj.CoreCompileInputs.cache
