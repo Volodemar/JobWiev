@@ -7,3 +7,7 @@ D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.csproj.GenerateResource.Cache
 D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.exe
 D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.pdb
 D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.Form1.resources
+D:\Work\JobWiev\JobWiev\bin\Debug\System.Data.SQLite.dll
+D:\Work\JobWiev\JobWiev\bin\Debug\System.Data.SQLite.xml
+D:\Work\JobWiev\JobWiev\bin\Debug\System.Data.SQLite.dll.config
+D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.csproj.CoreCompileInputs.cache

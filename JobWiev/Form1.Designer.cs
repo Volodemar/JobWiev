@@ -77,7 +77,6 @@
             this.buttonNext3 = new System.Windows.Forms.Button();
             this.buttonLast3 = new System.Windows.Forms.Button();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -88,7 +87,11 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.TasksGrid = new System.Windows.Forms.DataGridView();
+            this.SelectButton = new System.Windows.Forms.Button();
+            this.InsertButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.TasksGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Task1
@@ -530,15 +533,6 @@
             this.timerUpdate.Interval = 1000;
             this.timerUpdate.Tick += new System.EventHandler(this.timerUpdate_Tick);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 292);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(260, 158);
-            this.dataGridView1.TabIndex = 51;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(283, 8);
@@ -639,11 +633,51 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // TasksGrid
+            // 
+            this.TasksGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TasksGrid.Location = new System.Drawing.Point(12, 292);
+            this.TasksGrid.Name = "TasksGrid";
+            this.TasksGrid.Size = new System.Drawing.Size(329, 154);
+            this.TasksGrid.TabIndex = 62;
+            // 
+            // SelectButton
+            // 
+            this.SelectButton.Location = new System.Drawing.Point(400, 292);
+            this.SelectButton.Name = "SelectButton";
+            this.SelectButton.Size = new System.Drawing.Size(115, 23);
+            this.SelectButton.TabIndex = 63;
+            this.SelectButton.Text = "Загрузка данных";
+            this.SelectButton.UseVisualStyleBackColor = true;
+            this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
+            // 
+            // InsertButton
+            // 
+            this.InsertButton.Location = new System.Drawing.Point(400, 321);
+            this.InsertButton.Name = "InsertButton";
+            this.InsertButton.Size = new System.Drawing.Size(115, 23);
+            this.InsertButton.TabIndex = 64;
+            this.InsertButton.Text = "Добавление записи";
+            this.InsertButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(400, 350);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(115, 23);
+            this.DeleteButton.TabIndex = 65;
+            this.DeleteButton.Text = "Удаление записи";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 458);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.InsertButton);
+            this.Controls.Add(this.SelectButton);
+            this.Controls.Add(this.TasksGrid);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -654,7 +688,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonModify3);
             this.Controls.Add(this.buttonNext3);
             this.Controls.Add(this.buttonLast3);
@@ -705,7 +738,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JobWiev";
             this.TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.TasksGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -761,7 +796,6 @@
         private System.Windows.Forms.Button buttonNext3;
         private System.Windows.Forms.Button buttonLast3;
         private System.Windows.Forms.Timer timerUpdate;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -772,6 +806,10 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.DataGridView TasksGrid;
+        private System.Windows.Forms.Button SelectButton;
+        private System.Windows.Forms.Button InsertButton;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }
 
