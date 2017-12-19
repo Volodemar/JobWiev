@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\jobwiev\jobwiev\form1.cs</string>
+      <string>d:\work\jobwiev\jobwiev\form1.cs</string>
+      <string>d:\work\jobwiev\jobwiev\form1.designer.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\JobWiev\JobWiev\Properties\Resources.Designer.cs</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

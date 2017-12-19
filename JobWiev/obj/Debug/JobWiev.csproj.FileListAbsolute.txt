@@ -1,0 +1,9 @@
+D:\Work\JobWiev\JobWiev\bin\Debug\JobWiev.exe.config
+D:\Work\JobWiev\JobWiev\bin\Debug\JobWiev.exe
+D:\Work\JobWiev\JobWiev\bin\Debug\JobWiev.pdb
+D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.csprojResolveAssemblyReference.cache
+D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.Properties.Resources.resources
+D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.csproj.GenerateResource.Cache
+D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.exe
+D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.pdb
+D:\Work\JobWiev\JobWiev\obj\Debug\JobWiev.Form1.resources
