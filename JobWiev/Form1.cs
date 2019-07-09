@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Data.SQLite;
+using System.Media;
 
 namespace JobWiev
 {
@@ -21,6 +22,7 @@ namespace JobWiev
         private double TaskTime3 = 0;
         private double Modify = 5*60;
         private string SQLConnectString = "Data Source=JobWiev.db; Version=3";
+        SoundPlayer player = new SoundPlayer(@"Секундомер2.wav");
 
         public Form1()
         {
@@ -28,16 +30,26 @@ namespace JobWiev
 
             if (!DesignMode)
             {
-                //Расчет ставки в минуту
+                //Расчет ставки в секунду
                 MoneySecond.Text = Convert.ToString(Convert.ToDouble(MoneyHour.Text) / 60 / 60);
                 ModifyColor();
+                
                 //Hashtable test = new Hashtable();
                 //test.Add("1", "Абра кадабра");
                 //test.Add("2", "Абра кадабра2");
                 //test.Add("3", "Абра кадабра3");
                 //test.Add("4", "Абра кадабра еу!");
                 //dataGridView1.DataSource = test.Cast<DictionaryEntry>().Select(x => new {Col1 = x.Key.ToString(), Col2 = x.Value.ToString()}).ToList();
-    }
+            }
+        }
+
+        private void playSimpleSound(long TypeID)
+        {
+            if(TypeID == 1)
+                player.PlayLooping();
+
+            if (TypeID == 0)
+                player.Stop();
         }
 
         private void buttonTask1_Click(object sender, EventArgs e)
@@ -46,6 +58,7 @@ namespace JobWiev
             TimerJob.Start();
             CurrentTask = 1;
             ModifyColor();
+            playSimpleSound(1);
         }
 
         private void buttonTask2_Click(object sender, EventArgs e)
@@ -54,6 +67,7 @@ namespace JobWiev
             TimerJob.Start();
             CurrentTask = 2;
             ModifyColor();
+            playSimpleSound(1);
         }
 
         private void buttonTask3_Click(object sender, EventArgs e)
@@ -62,6 +76,7 @@ namespace JobWiev
             TimerJob.Start();
             CurrentTask = 3;
             ModifyColor();
+            playSimpleSound(1);
         }
 
         private void buttonTaskStop_Click(object sender, EventArgs e)
@@ -70,6 +85,7 @@ namespace JobWiev
             TimerJob.Stop();
             CurrentTask = 0;
             ModifyColor();
+            playSimpleSound(0);
         }
 
         private void TimerJob_Tick(object sender, EventArgs e)
@@ -409,20 +425,20 @@ namespace JobWiev
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Process.Start("d:\\Work\\PR\\RIP2\\ClientLoader.lnk");
-            this.WindowState = FormWindowState.Maximized;
+            Process.Start("d:\\Work\\PR\\RIP45\\ClientLoader.lnk");
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Process.Start("d:\\Work\\PR\\RIP2\\SOURCES\\CLIENT\\Client.sln");
-            this.WindowState = FormWindowState.Maximized;
+            Process.Start("d:\\Work\\PR\\RIP45\\SOURCES\\CLIENT\\Client.sln");
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Process.Start("d:\\Work\\PR\\RIP2\\Build.bat");
-            this.WindowState = FormWindowState.Maximized;
+            Process.Start("d:\\Work\\PR\\RIP45\\Build.bat");
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -485,5 +501,14 @@ namespace JobWiev
 
             DB.Close();
         }
-    }
+
+		/// <summary>
+		/// Изменил сумму ставка в час
+		/// </summary>
+		private void MoneyHour_TextChanged(object sender, EventArgs e)
+		{
+			// Перерасчитали сумму ставка в секунду
+			MoneySecond.Text = Convert.ToString(Convert.ToDouble(MoneyHour.Text) / 60 / 60);
+		}
+	}
 }
